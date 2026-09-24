@@ -1,4 +1,4 @@
-name: repogeist-github-actions
+name: repogeist-github-action
 
 on: push
 
