@@ -11,10 +11,10 @@ jobs:
               with:
                   username: ${{ secrets.DOCKERHUB_USERNAME }}
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
-            - run: docker build -f Backend/RepoGeist/RepoGeist/Dockerfile.prod -t zl23abdessamed/repogeist-backend:1.0 Backend/RepoGeist/RepoGeist
-            - run: docker build -f Frontend/RepoGeist/Dockerfile.prod -t zl23abdessamed/repogeist-frontend:1.0 Frontend/RepoGeist
-            - run: docker push zl23abdessamed/repogeist-backend:1.0
-            - run: docker push zl23abdessamed/repogeist-frontend:1.0
+            - run: docker build -f Backend/RepoGeist/RepoGeist/Dockerfile.prod -t zl23abdessamed/repogeist-backend:${{github.sha}} Backend/RepoGeist/RepoGeist
+            - run: docker build -f Frontend/RepoGeist/Dockerfile.prod -t zl23abdessamed/repogeist-frontend:${{github.sha}} Frontend/RepoGeist
+            - run: docker push zl23abdessamed/repogeist-backend:${{github.sha}}
+            - run: docker push zl23abdessamed/repogeist-frontend:${{github.sha}}
 
     deploy:
         runs-on: [self-hosted, windows, x64]
