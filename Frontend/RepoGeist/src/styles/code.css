@@ -1,0 +1,337 @@
+/* ~/styles/code.css — the /code leaf's two cards.
+   Card chrome (surface, border, titlebar, scrolling body) comes from
+   canvas-card.css via DraggableCard; this file only styles what goes INSIDE
+   them. The old .code-view / .code-body / .code-pane / .code-header /
+   .code-owner / .code-title layout rules are gone with the wrapper
+   elements they styled — delete them if they're still around elsewhere. */
+
+/* ── Files card: explorer ─────────────────────────────────────────────── */
+
+/* Scrolling belongs to the card body now, so the tree just pads itself. */
+.file-tree {
+  padding: 8px 6px;
+}
+
+.file-tree>.muted {
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.file-tree-branch,
+.file-tree-branch ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.file-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 5px 8px 5px calc(var(--depth, 0) * 14px + 8px);
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  /* Selection feedback settles instead of snapping — done in CSS rather than a
+     Motion instance per row, since trees can hold thousands of rows. */
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.file-tree-row:hover {
+  background: var(--surface-raised);
+}
+
+.file-tree-row:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: -1px;
+}
+
+.file-tree-chevron,
+.file-tree-icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--ink-muted);
+}
+
+.file-tree-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.file-tree-row.is-file .file-tree-name {
+  color: var(--ink-muted);
+}
+
+.file-tree-row.is-file.active {
+  background: var(--surface-raised);
+}
+
+.file-tree-row.is-file.active .file-tree-name,
+.file-tree-row.is-file.active .file-tree-icon {
+  color: var(--signal);
+}
+
+/* ── Motion wrappers (solid-motionone) ─────────────────────────────────── */
+
+/* Presence container for an expanded directory's children. Carries no layout;
+   the nested <ul> inside keeps its own .file-tree-branch styling. */
+.file-tree-children {
+  min-width: 0;
+}
+
+/* Motion.div around the loaded file in the file card. */
+.code-file {
+  display: block;
+  min-width: 0;
+}
+
+/* ── File card: titlebar path ──────────────────────────────────────────── */
+
+/* Directory muted, filename in full ink. Only the directory shrinks (with an
+   ellipsis) when the card is narrow — the filename is the part you need. */
+.code-titlebar-path {
+  display: flex;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.code-titlebar-dir {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--ink-muted);
+}
+
+.code-titlebar-base {
+  flex: none;
+  color: var(--ink);
+}
+
+/* ── File card: body ───────────────────────────────────────────────────── */
+
+/* Notices and "loading…" lines: the card body has no padding of its own. */
+.code-status {
+  margin: 0;
+}
+
+p.code-status {
+  padding: 16px 18px;
+}
+
+.empty.code-status {
+  padding: 32px 18px;
+}
+
+.code-recheck {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.code-recheck:hover {
+  background: var(--surface-raised);
+}
+
+/* The card body is the scroller, so <pre> never scrolls on its own: a long
+   file scrolls the card down, a wide one scrolls it sideways. */
+.code-raw,
+.code-highlighted pre {
+  margin: 0;
+  padding: 14px 18px 20px;
+  overflow: visible;
+  white-space: pre;
+  tab-size: 2;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  line-height: 1.6;
+  cursor: text;
+}
+
+.code-raw {
+  color: var(--ink);
+}
+
+/* shiki writes its theme background onto <pre style="…"> inline; the card's
+   own surface should show through instead, so it needs !important. */
+.code-highlighted pre.shiki {
+  background: transparent !important;
+}
+
+/* ── Theme card: swatch list ───────────────────────────────────────────── */
+/* Same shape as .file-tree-row: plain buttons, CSS-only hover/active state
+   (no per-row Motion — this list runs to ~65 rows, same reasoning as the
+   file tree). Scrolling belongs to the DraggableCard body, so this just
+   pads itself like .file-tree does. */
+
+.theme-picker-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 6px;
+}
+
+.theme-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.15s ease;
+}
+
+.theme-picker-row:hover {
+  background: var(--surface-raised);
+}
+
+.theme-picker-row:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: -1px;
+}
+
+.theme-picker-row.active {
+  background: var(--surface-raised);
+}
+
+.theme-picker-row.active .theme-picker-name {
+  color: var(--signal);
+}
+
+/* The swatch: a small rounded chip in the theme's own editor background,
+   with a second dot in one of its token colors as an accent — enough to
+   tell themes apart at a glance without rendering a whole code sample. */
+.theme-picker-swatch {
+  flex: none;
+  display: inline-flex;
+}
+
+.theme-picker-swatch-bg {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--edge);
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* Before a theme's colors resolve: a quiet placeholder, not an empty gap —
+   swatches load per-row (theme.ts's ensureSwatchLoaded), so rows below the
+   fold may sit like this briefly until they're asked for. */
+.theme-picker-swatch-loading {
+  background: var(--surface-raised);
+}
+
+.theme-picker-swatch-accent {
+  width: 9px;
+  height: 9px;
+  margin: 2px;
+  border-radius: 2px;
+}
+
+.theme-picker-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Collapsed Theme "card": a small pill in world space where the Theme card
+   would spawn. Styled like the card surface so it reads as part of the same
+   chrome; clicking it mounts the real DraggableCard. */
+.code-theme-toggle {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.15s ease;
+}
+
+.code-theme-toggle:hover {
+  background: var(--surface-raised);
+}
+
+.code-theme-toggle:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: 1px;
+}
+
+.code-theme-toggle-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+/* Collapsed Theme card body: one row showing the active theme, reopens the
+   full list on click. Same shape as .theme-picker-row on purpose — this is
+   what that list looks like collapsed to its selected entry. */
+.theme-picker-collapsed-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  transition: background-color 0.15s ease;
+}
+
+.theme-picker-collapsed-row:hover {
+  background: var(--surface-raised);
+}
+
+.theme-picker-collapsed-row:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: -2px;
+}

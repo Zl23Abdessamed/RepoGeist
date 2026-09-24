@@ -1,0 +1,23 @@
+FROM node:24 AS build
+
+WORKDIR /src
+
+COPY package.json pnpm-lock.yaml ./
+
+RUN corepack enable && corepack prepare pnpm@12.4.1 --activate
+
+RUN pnpm install --frozen-lockfile
+
+COPY . .
+
+RUN pnpm build
+
+FROM node:24-alpine 
+
+WORKDIR /app
+
+COPY --from=build /src/.output ./.output
+
+EXPOSE 3000
+
+CMD [ "node" , "./.output/server/index.mjs" ]

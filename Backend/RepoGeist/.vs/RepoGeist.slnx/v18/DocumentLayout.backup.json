@@ -1,0 +1,159 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\dockerfile.prod||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\dockerfile.prod||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\jobs\\clonejobs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\jobs\\clonejobs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\repogeist.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\repogeist.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\data\\repogeistdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\data\\repogeistdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\controllers\\clonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\controllers\\clonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|c:\\users\\zalla abdessamed\\desktop\\antigravity chess\\devops\\backend\\repogeist\\repogeist\\languages.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{2FF86744-41E3-6C96-36AB-6E08464FE4B3}|RepoGeist\\RepoGeist.csproj|solutionrelative:repogeist\\languages.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CloneJobs.cs",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Jobs\\CloneJobs.cs",
+              "RelativeDocumentMoniker": "RepoGeist\\Jobs\\CloneJobs.cs",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Jobs\\CloneJobs.cs",
+              "RelativeToolTip": "RepoGeist\\Jobs\\CloneJobs.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAwwF4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T21:43:54.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Dockerfile",
+              "RelativeDocumentMoniker": "RepoGeist\\Dockerfile",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Dockerfile",
+              "RelativeToolTip": "RepoGeist\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAB3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-09-22T19:05:51.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RepoGeist",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\RepoGeist.csproj",
+              "RelativeDocumentMoniker": "RepoGeist\\RepoGeist.csproj",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\RepoGeist.csproj",
+              "RelativeToolTip": "RepoGeist\\RepoGeist.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-22T21:40:48.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RepogeistDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Data\\RepogeistDbContext.cs",
+              "RelativeDocumentMoniker": "RepoGeist\\Data\\RepogeistDbContext.cs",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Data\\RepogeistDbContext.cs",
+              "RelativeToolTip": "RepoGeist\\Data\\RepogeistDbContext.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAADwv88AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T21:40:35.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Program.cs",
+              "RelativeDocumentMoniker": "RepoGeist\\Program.cs",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Program.cs",
+              "RelativeToolTip": "RepoGeist\\Program.cs",
+              "ViewState": "AgIAAL8AAAAAAAAAAADwv+QAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-22T21:40:27.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dockerfile.prod",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Dockerfile.prod",
+              "RelativeDocumentMoniker": "RepoGeist\\Dockerfile.prod",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Dockerfile.prod",
+              "RelativeToolTip": "RepoGeist\\Dockerfile.prod",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-09-22T19:05:48.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "languages.yml",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\languages.yml",
+              "RelativeDocumentMoniker": "RepoGeist\\languages.yml",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\languages.yml",
+              "RelativeToolTip": "RepoGeist\\languages.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-09-20T17:56:14.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CloneController.cs",
+              "DocumentMoniker": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Controllers\\CloneController.cs",
+              "RelativeDocumentMoniker": "RepoGeist\\Controllers\\CloneController.cs",
+              "ToolTip": "C:\\Users\\ZALLA Abdessamed\\Desktop\\Antigravity Chess\\DevOps\\Backend\\RepoGeist\\RepoGeist\\Controllers\\CloneController.cs",
+              "RelativeToolTip": "RepoGeist\\Controllers\\CloneController.cs",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAuwPsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-20T17:50:50.273Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

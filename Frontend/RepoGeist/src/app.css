@@ -1,0 +1,26 @@
+/* app.css */
+
+@import "tailwindcss";
+
+:root {
+  --ground: #141310;
+  /* warm near-black, dark soil — not #000, not #0B0B0B */
+  --surface: #1e1c17;
+  /* exposed rock */
+  --surface-raised: #28251e;
+  /* hover / active / modal */
+  --ink: #ede7da;
+  /* warm off-white, not stark #fff */
+  --ink-muted: #948a78;
+  /* secondary text */
+  --signal: #c9a34e;
+  /* muted mineral gold — the one accent */
+  --status-up: #6f9c76;
+  --status-down: #b2604f;
+  --status-unknown: #948a78;
+  --edge: rgba(237, 231, 218, 0.09);
+  /* hairline borders = ink at low alpha */
+  --font-display: "JetBrains Mono", ui-monospace, monospace;
+  --font-body: "Public Sans", ui-sans-serif, sans-serif;
+}
+

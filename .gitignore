@@ -1,0 +1,18 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependency folders
+node_modules/
+
+# Build/output folders
+.output/
+bin/
+obj/
+release/
+
+
+.dockerignore
+appsettings.json
+appsettings.Development.json

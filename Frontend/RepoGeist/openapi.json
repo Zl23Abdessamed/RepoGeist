@@ -1,0 +1,1152 @@
+{
+    "openapi":  "3.1.1",
+    "info":  {
+                 "title":  "RepoGeist | v1",
+                 "version":  "1.0.0"
+             },
+    "servers":  [
+                    {
+                        "url":  "http://localhost:5221/"
+                    }
+                ],
+    "paths":  {
+                  "/api/repos/{owner}/{name}/analyze":  {
+                                                            "post":  {
+                                                                         "tags":  [
+                                                                                      "Analysis"
+                                                                                  ],
+                                                                         "parameters":  [
+                                                                                            {
+                                                                                                "name":  "owner",
+                                                                                                "in":  "path",
+                                                                                                "required":  true,
+                                                                                                "schema":  {
+                                                                                                               "type":  "string"
+                                                                                                           }
+                                                                                            },
+                                                                                            {
+                                                                                                "name":  "name",
+                                                                                                "in":  "path",
+                                                                                                "required":  true,
+                                                                                                "schema":  {
+                                                                                                               "type":  "string"
+                                                                                                           }
+                                                                                            }
+                                                                                        ],
+                                                                         "responses":  {
+                                                                                           "200":  {
+                                                                                                       "description":  "OK",
+                                                                                                       "content":  {
+                                                                                                                       "text/plain":  {
+                                                                                                                                          "schema":  {
+                                                                                                                                                         "$ref":  "#/components/schemas/AnalysisStatusDto"
+                                                                                                                                                     }
+                                                                                                                                      },
+                                                                                                                       "application/json":  {
+                                                                                                                                                "schema":  {
+                                                                                                                                                               "$ref":  "#/components/schemas/AnalysisStatusDto"
+                                                                                                                                                           }
+                                                                                                                                            },
+                                                                                                                       "text/json":  {
+                                                                                                                                         "schema":  {
+                                                                                                                                                        "$ref":  "#/components/schemas/AnalysisStatusDto"
+                                                                                                                                                    }
+                                                                                                                                     }
+                                                                                                                   }
+                                                                                                   }
+                                                                                       }
+                                                                     }
+                                                        },
+                  "/api/repos/{owner}/{name}/analysis-status":  {
+                                                                    "get":  {
+                                                                                "tags":  [
+                                                                                             "Analysis"
+                                                                                         ],
+                                                                                "parameters":  [
+                                                                                                   {
+                                                                                                       "name":  "owner",
+                                                                                                       "in":  "path",
+                                                                                                       "required":  true,
+                                                                                                       "schema":  {
+                                                                                                                      "type":  "string"
+                                                                                                                  }
+                                                                                                   },
+                                                                                                   {
+                                                                                                       "name":  "name",
+                                                                                                       "in":  "path",
+                                                                                                       "required":  true,
+                                                                                                       "schema":  {
+                                                                                                                      "type":  "string"
+                                                                                                                  }
+                                                                                                   }
+                                                                                               ],
+                                                                                "responses":  {
+                                                                                                  "200":  {
+                                                                                                              "description":  "OK",
+                                                                                                              "content":  {
+                                                                                                                              "text/plain":  {
+                                                                                                                                                 "schema":  {
+                                                                                                                                                                "$ref":  "#/components/schemas/AnalysisStatusDto"
+                                                                                                                                                            }
+                                                                                                                                             },
+                                                                                                                              "application/json":  {
+                                                                                                                                                       "schema":  {
+                                                                                                                                                                      "$ref":  "#/components/schemas/AnalysisStatusDto"
+                                                                                                                                                                  }
+                                                                                                                                                   },
+                                                                                                                              "text/json":  {
+                                                                                                                                                "schema":  {
+                                                                                                                                                               "$ref":  "#/components/schemas/AnalysisStatusDto"
+                                                                                                                                                           }
+                                                                                                                                            }
+                                                                                                                          }
+                                                                                                          },
+                                                                                                  "404":  {
+                                                                                                              "description":  "Not Found",
+                                                                                                              "content":  {
+                                                                                                                              "text/plain":  {
+                                                                                                                                                 "schema":  {
+                                                                                                                                                                "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                            }
+                                                                                                                                             },
+                                                                                                                              "application/json":  {
+                                                                                                                                                       "schema":  {
+                                                                                                                                                                      "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                                  }
+                                                                                                                                                   },
+                                                                                                                              "text/json":  {
+                                                                                                                                                "schema":  {
+                                                                                                                                                               "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                           }
+                                                                                                                                            }
+                                                                                                                          }
+                                                                                                          }
+                                                                                              }
+                                                                            }
+                                                                },
+                  "/api/repos/{owner}/{name}/graph":  {
+                                                          "get":  {
+                                                                      "tags":  [
+                                                                                   "Analysis"
+                                                                               ],
+                                                                      "parameters":  [
+                                                                                         {
+                                                                                             "name":  "owner",
+                                                                                             "in":  "path",
+                                                                                             "required":  true,
+                                                                                             "schema":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         },
+                                                                                         {
+                                                                                             "name":  "name",
+                                                                                             "in":  "path",
+                                                                                             "required":  true,
+                                                                                             "schema":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         }
+                                                                                     ],
+                                                                      "responses":  {
+                                                                                        "200":  {
+                                                                                                    "description":  "OK",
+                                                                                                    "content":  {
+                                                                                                                    "text/plain":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/DependencyGraphDto"
+                                                                                                                                                  }
+                                                                                                                                   },
+                                                                                                                    "application/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/DependencyGraphDto"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                    "text/json":  {
+                                                                                                                                      "schema":  {
+                                                                                                                                                     "$ref":  "#/components/schemas/DependencyGraphDto"
+                                                                                                                                                 }
+                                                                                                                                  }
+                                                                                                                }
+                                                                                                },
+                                                                                        "404":  {
+                                                                                                    "description":  "Not Found",
+                                                                                                    "content":  {
+                                                                                                                    "text/plain":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                  }
+                                                                                                                                   },
+                                                                                                                    "application/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                    "text/json":  {
+                                                                                                                                      "schema":  {
+                                                                                                                                                     "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                 }
+                                                                                                                                  }
+                                                                                                                }
+                                                                                                }
+                                                                                    }
+                                                                  }
+                                                      },
+                  "/api/repos/{owner}/{name}/clone-status":  {
+                                                                 "get":  {
+                                                                             "tags":  [
+                                                                                          "Clone"
+                                                                                      ],
+                                                                             "parameters":  [
+                                                                                                {
+                                                                                                    "name":  "owner",
+                                                                                                    "in":  "path",
+                                                                                                    "required":  true,
+                                                                                                    "schema":  {
+                                                                                                                   "type":  "string"
+                                                                                                               }
+                                                                                                },
+                                                                                                {
+                                                                                                    "name":  "name",
+                                                                                                    "in":  "path",
+                                                                                                    "required":  true,
+                                                                                                    "schema":  {
+                                                                                                                   "type":  "string"
+                                                                                                               }
+                                                                                                }
+                                                                                            ],
+                                                                             "responses":  {
+                                                                                               "200":  {
+                                                                                                           "description":  "OK",
+                                                                                                           "content":  {
+                                                                                                                           "text/plain":  {
+                                                                                                                                              "schema":  {
+                                                                                                                                                             "$ref":  "#/components/schemas/CloneStatusDto"
+                                                                                                                                                         }
+                                                                                                                                          },
+                                                                                                                           "application/json":  {
+                                                                                                                                                    "schema":  {
+                                                                                                                                                                   "$ref":  "#/components/schemas/CloneStatusDto"
+                                                                                                                                                               }
+                                                                                                                                                },
+                                                                                                                           "text/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/CloneStatusDto"
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                       }
+                                                                                                       },
+                                                                                               "404":  {
+                                                                                                           "description":  "Not Found",
+                                                                                                           "content":  {
+                                                                                                                           "text/plain":  {
+                                                                                                                                              "schema":  {
+                                                                                                                                                             "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                         }
+                                                                                                                                          },
+                                                                                                                           "application/json":  {
+                                                                                                                                                    "schema":  {
+                                                                                                                                                                   "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                               }
+                                                                                                                                                },
+                                                                                                                           "text/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                       }
+                                                                                                       }
+                                                                                           }
+                                                                         }
+                                                             },
+                  "/api/repos/{owner}/{name}/file-tree":  {
+                                                              "get":  {
+                                                                          "tags":  [
+                                                                                       "Clone"
+                                                                                   ],
+                                                                          "parameters":  [
+                                                                                             {
+                                                                                                 "name":  "owner",
+                                                                                                 "in":  "path",
+                                                                                                 "required":  true,
+                                                                                                 "schema":  {
+                                                                                                                "type":  "string"
+                                                                                                            }
+                                                                                             },
+                                                                                             {
+                                                                                                 "name":  "name",
+                                                                                                 "in":  "path",
+                                                                                                 "required":  true,
+                                                                                                 "schema":  {
+                                                                                                                "type":  "string"
+                                                                                                            }
+                                                                                             }
+                                                                                         ],
+                                                                          "responses":  {
+                                                                                            "200":  {
+                                                                                                        "description":  "OK",
+                                                                                                        "content":  {
+                                                                                                                        "text/plain":  {
+                                                                                                                                           "schema":  {
+                                                                                                                                                          "$ref":  "#/components/schemas/FileTreeDto"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "application/json":  {
+                                                                                                                                                 "schema":  {
+                                                                                                                                                                "$ref":  "#/components/schemas/FileTreeDto"
+                                                                                                                                                            }
+                                                                                                                                             },
+                                                                                                                        "text/json":  {
+                                                                                                                                          "schema":  {
+                                                                                                                                                         "$ref":  "#/components/schemas/FileTreeDto"
+                                                                                                                                                     }
+                                                                                                                                      }
+                                                                                                                    }
+                                                                                                    },
+                                                                                            "404":  {
+                                                                                                        "description":  "Not Found",
+                                                                                                        "content":  {
+                                                                                                                        "text/plain":  {
+                                                                                                                                           "schema":  {
+                                                                                                                                                          "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                      }
+                                                                                                                                       },
+                                                                                                                        "application/json":  {
+                                                                                                                                                 "schema":  {
+                                                                                                                                                                "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                            }
+                                                                                                                                             },
+                                                                                                                        "text/json":  {
+                                                                                                                                          "schema":  {
+                                                                                                                                                         "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                     }
+                                                                                                                                      }
+                                                                                                                    }
+                                                                                                    }
+                                                                                        }
+                                                                      }
+                                                          },
+                  "/api/repos/{owner}/{name}/files/{path}":  {
+                                                                 "get":  {
+                                                                             "tags":  [
+                                                                                          "Clone"
+                                                                                      ],
+                                                                             "parameters":  [
+                                                                                                {
+                                                                                                    "name":  "owner",
+                                                                                                    "in":  "path",
+                                                                                                    "required":  true,
+                                                                                                    "schema":  {
+                                                                                                                   "type":  "string"
+                                                                                                               }
+                                                                                                },
+                                                                                                {
+                                                                                                    "name":  "name",
+                                                                                                    "in":  "path",
+                                                                                                    "required":  true,
+                                                                                                    "schema":  {
+                                                                                                                   "type":  "string"
+                                                                                                               }
+                                                                                                },
+                                                                                                {
+                                                                                                    "name":  "path",
+                                                                                                    "in":  "path",
+                                                                                                    "required":  true,
+                                                                                                    "schema":  {
+                                                                                                                   "type":  "string"
+                                                                                                               }
+                                                                                                }
+                                                                                            ],
+                                                                             "responses":  {
+                                                                                               "200":  {
+                                                                                                           "description":  "OK",
+                                                                                                           "content":  {
+                                                                                                                           "text/plain":  {
+                                                                                                                                              "schema":  {
+                                                                                                                                                             "$ref":  "#/components/schemas/FileContentDto"
+                                                                                                                                                         }
+                                                                                                                                          },
+                                                                                                                           "application/json":  {
+                                                                                                                                                    "schema":  {
+                                                                                                                                                                   "$ref":  "#/components/schemas/FileContentDto"
+                                                                                                                                                               }
+                                                                                                                                                },
+                                                                                                                           "text/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/FileContentDto"
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                       }
+                                                                                                       },
+                                                                                               "404":  {
+                                                                                                           "description":  "Not Found",
+                                                                                                           "content":  {
+                                                                                                                           "text/plain":  {
+                                                                                                                                              "schema":  {
+                                                                                                                                                             "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                         }
+                                                                                                                                          },
+                                                                                                                           "application/json":  {
+                                                                                                                                                    "schema":  {
+                                                                                                                                                                   "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                               }
+                                                                                                                                                },
+                                                                                                                           "text/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/ProblemDetails"
+                                                                                                                                                        }
+                                                                                                                                         }
+                                                                                                                       }
+                                                                                                       }
+                                                                                           }
+                                                                         }
+                                                             },
+                  "/api/repos/{owner}/{name}/health":  {
+                                                           "get":  {
+                                                                       "tags":  [
+                                                                                    "Health"
+                                                                                ],
+                                                                       "parameters":  [
+                                                                                          {
+                                                                                              "name":  "owner",
+                                                                                              "in":  "path",
+                                                                                              "required":  true,
+                                                                                              "schema":  {
+                                                                                                             "type":  "string"
+                                                                                                         }
+                                                                                          },
+                                                                                          {
+                                                                                              "name":  "name",
+                                                                                              "in":  "path",
+                                                                                              "required":  true,
+                                                                                              "schema":  {
+                                                                                                             "type":  "string"
+                                                                                                         }
+                                                                                          },
+                                                                                          {
+                                                                                              "name":  "limit",
+                                                                                              "in":  "query",
+                                                                                              "schema":  {
+                                                                                                             "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                             "type":  [
+                                                                                                                          "integer",
+                                                                                                                          "string"
+                                                                                                                      ],
+                                                                                                             "format":  "int32",
+                                                                                                             "default":  100
+                                                                                                         }
+                                                                                          }
+                                                                                      ],
+                                                                       "responses":  {
+                                                                                         "200":  {
+                                                                                                     "description":  "OK",
+                                                                                                     "content":  {
+                                                                                                                     "text/plain":  {
+                                                                                                                                        "schema":  {
+                                                                                                                                                       "type":  "array",
+                                                                                                                                                       "items":  {
+                                                                                                                                                                     "$ref":  "#/components/schemas/HealthStatusDto"
+                                                                                                                                                                 }
+                                                                                                                                                   }
+                                                                                                                                    },
+                                                                                                                     "application/json":  {
+                                                                                                                                              "schema":  {
+                                                                                                                                                             "type":  "array",
+                                                                                                                                                             "items":  {
+                                                                                                                                                                           "$ref":  "#/components/schemas/HealthStatusDto"
+                                                                                                                                                                       }
+                                                                                                                                                         }
+                                                                                                                                          },
+                                                                                                                     "text/json":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "type":  "array",
+                                                                                                                                                      "items":  {
+                                                                                                                                                                    "$ref":  "#/components/schemas/HealthStatusDto"
+                                                                                                                                                                }
+                                                                                                                                                  }
+                                                                                                                                   }
+                                                                                                                 }
+                                                                                                 }
+                                                                                     }
+                                                                   }
+                                                       },
+                  "/api/repos/{owner}/{name}/commit-activity":  {
+                                                                    "get":  {
+                                                                                "tags":  [
+                                                                                             "Health"
+                                                                                         ],
+                                                                                "parameters":  [
+                                                                                                   {
+                                                                                                       "name":  "owner",
+                                                                                                       "in":  "path",
+                                                                                                       "required":  true,
+                                                                                                       "schema":  {
+                                                                                                                      "type":  "string"
+                                                                                                                  }
+                                                                                                   },
+                                                                                                   {
+                                                                                                       "name":  "name",
+                                                                                                       "in":  "path",
+                                                                                                       "required":  true,
+                                                                                                       "schema":  {
+                                                                                                                      "type":  "string"
+                                                                                                                  }
+                                                                                                   },
+                                                                                                   {
+                                                                                                       "name":  "weeks",
+                                                                                                       "in":  "query",
+                                                                                                       "schema":  {
+                                                                                                                      "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                                      "type":  [
+                                                                                                                                   "integer",
+                                                                                                                                   "string"
+                                                                                                                               ],
+                                                                                                                      "format":  "int32",
+                                                                                                                      "default":  52
+                                                                                                                  }
+                                                                                                   }
+                                                                                               ],
+                                                                                "responses":  {
+                                                                                                  "200":  {
+                                                                                                              "description":  "OK",
+                                                                                                              "content":  {
+                                                                                                                              "text/plain":  {
+                                                                                                                                                 "schema":  {
+                                                                                                                                                                "type":  "array",
+                                                                                                                                                                "items":  {
+                                                                                                                                                                              "$ref":  "#/components/schemas/CommitActivityDto"
+                                                                                                                                                                          }
+                                                                                                                                                            }
+                                                                                                                                             },
+                                                                                                                              "application/json":  {
+                                                                                                                                                       "schema":  {
+                                                                                                                                                                      "type":  "array",
+                                                                                                                                                                      "items":  {
+                                                                                                                                                                                    "$ref":  "#/components/schemas/CommitActivityDto"
+                                                                                                                                                                                }
+                                                                                                                                                                  }
+                                                                                                                                                   },
+                                                                                                                              "text/json":  {
+                                                                                                                                                "schema":  {
+                                                                                                                                                               "type":  "array",
+                                                                                                                                                               "items":  {
+                                                                                                                                                                             "$ref":  "#/components/schemas/CommitActivityDto"
+                                                                                                                                                                         }
+                                                                                                                                                           }
+                                                                                                                                            }
+                                                                                                                          }
+                                                                                                          }
+                                                                                              }
+                                                                            }
+                                                                },
+                  "/api/repos":  {
+                                     "get":  {
+                                                 "tags":  [
+                                                              "Repos"
+                                                          ],
+                                                 "responses":  {
+                                                                   "200":  {
+                                                                               "description":  "OK",
+                                                                               "content":  {
+                                                                                               "text/plain":  {
+                                                                                                                  "schema":  {
+                                                                                                                                 "type":  "array",
+                                                                                                                                 "items":  {
+                                                                                                                                               "$ref":  "#/components/schemas/RepoCardDto"
+                                                                                                                                           }
+                                                                                                                             }
+                                                                                                              },
+                                                                                               "application/json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "type":  "array",
+                                                                                                                                       "items":  {
+                                                                                                                                                     "$ref":  "#/components/schemas/RepoCardDto"
+                                                                                                                                                 }
+                                                                                                                                   }
+                                                                                                                    },
+                                                                                               "text/json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "type":  "array",
+                                                                                                                                "items":  {
+                                                                                                                                              "$ref":  "#/components/schemas/RepoCardDto"
+                                                                                                                                          }
+                                                                                                                            }
+                                                                                                             }
+                                                                                           }
+                                                                           }
+                                                               }
+                                             },
+                                     "post":  {
+                                                  "tags":  [
+                                                               "Repos"
+                                                           ],
+                                                  "requestBody":  {
+                                                                      "content":  {
+                                                                                      "application/json":  {
+                                                                                                               "schema":  {
+                                                                                                                              "$ref":  "#/components/schemas/CreateRepoRequestDto"
+                                                                                                                          }
+                                                                                                           },
+                                                                                      "text/json":  {
+                                                                                                        "schema":  {
+                                                                                                                       "$ref":  "#/components/schemas/CreateRepoRequestDto"
+                                                                                                                   }
+                                                                                                    },
+                                                                                      "application/*+json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "$ref":  "#/components/schemas/CreateRepoRequestDto"
+                                                                                                                            }
+                                                                                                             }
+                                                                                  },
+                                                                      "required":  true
+                                                                  },
+                                                  "responses":  {
+                                                                    "200":  {
+                                                                                "description":  "OK",
+                                                                                "content":  {
+                                                                                                "text/plain":  {
+                                                                                                                   "schema":  {
+                                                                                                                                  "$ref":  "#/components/schemas/RepoCardDto"
+                                                                                                                              }
+                                                                                                               },
+                                                                                                "application/json":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "$ref":  "#/components/schemas/RepoCardDto"
+                                                                                                                                    }
+                                                                                                                     },
+                                                                                                "text/json":  {
+                                                                                                                  "schema":  {
+                                                                                                                                 "$ref":  "#/components/schemas/RepoCardDto"
+                                                                                                                             }
+                                                                                                              }
+                                                                                            }
+                                                                            }
+                                                                }
+                                              }
+                                 },
+                  "/api/repos/{owner}/{name}":  {
+                                                    "get":  {
+                                                                "tags":  [
+                                                                             "Repos"
+                                                                         ],
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "owner",
+                                                                                       "in":  "path",
+                                                                                       "required":  true,
+                                                                                       "schema":  {
+                                                                                                      "type":  "string"
+                                                                                                  }
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "name",
+                                                                                       "in":  "path",
+                                                                                       "required":  true,
+                                                                                       "schema":  {
+                                                                                                      "type":  "string"
+                                                                                                  }
+                                                                                   }
+                                                                               ],
+                                                                "responses":  {
+                                                                                  "200":  {
+                                                                                              "description":  "OK",
+                                                                                              "content":  {
+                                                                                                              "text/plain":  {
+                                                                                                                                 "schema":  {
+                                                                                                                                                "$ref":  "#/components/schemas/RepoDetailDto"
+                                                                                                                                            }
+                                                                                                                             },
+                                                                                                              "application/json":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/RepoDetailDto"
+                                                                                                                                                  }
+                                                                                                                                   },
+                                                                                                              "text/json":  {
+                                                                                                                                "schema":  {
+                                                                                                                                               "$ref":  "#/components/schemas/RepoDetailDto"
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                          }
+                                                                                          }
+                                                                              }
+                                                            }
+                                                },
+                  "/api/repos/{owner}/{name}/sync":  {
+                                                         "post":  {
+                                                                      "tags":  [
+                                                                                   "Repos"
+                                                                               ],
+                                                                      "parameters":  [
+                                                                                         {
+                                                                                             "name":  "owner",
+                                                                                             "in":  "path",
+                                                                                             "required":  true,
+                                                                                             "schema":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         },
+                                                                                         {
+                                                                                             "name":  "name",
+                                                                                             "in":  "path",
+                                                                                             "required":  true,
+                                                                                             "schema":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                         }
+                                                                                     ],
+                                                                      "responses":  {
+                                                                                        "200":  {
+                                                                                                    "description":  "OK",
+                                                                                                    "content":  {
+                                                                                                                    "text/plain":  {
+                                                                                                                                       "schema":  {
+                                                                                                                                                      "$ref":  "#/components/schemas/RepoDetailDto"
+                                                                                                                                                  }
+                                                                                                                                   },
+                                                                                                                    "application/json":  {
+                                                                                                                                             "schema":  {
+                                                                                                                                                            "$ref":  "#/components/schemas/RepoDetailDto"
+                                                                                                                                                        }
+                                                                                                                                         },
+                                                                                                                    "text/json":  {
+                                                                                                                                      "schema":  {
+                                                                                                                                                     "$ref":  "#/components/schemas/RepoDetailDto"
+                                                                                                                                                 }
+                                                                                                                                  }
+                                                                                                                }
+                                                                                                }
+                                                                                    }
+                                                                  }
+                                                     }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "AnalysisStatus":  {
+                                                              "type":  "integer"
+                                                          },
+                                       "AnalysisStatusDto":  {
+                                                                 "type":  "object",
+                                                                 "properties":  {
+                                                                                    "repoId":  {
+                                                                                                   "type":  "string",
+                                                                                                   "format":  "uuid"
+                                                                                               },
+                                                                                    "jobId":  {
+                                                                                                  "type":  "string",
+                                                                                                  "format":  "uuid"
+                                                                                              },
+                                                                                    "status":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                    "progressPercent":  {
+                                                                                                            "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                            "type":  [
+                                                                                                                         "null",
+                                                                                                                         "integer",
+                                                                                                                         "string"
+                                                                                                                     ],
+                                                                                                            "format":  "int32"
+                                                                                                        },
+                                                                                    "errorMessage":  {
+                                                                                                         "type":  [
+                                                                                                                      "null",
+                                                                                                                      "string"
+                                                                                                                  ]
+                                                                                                     }
+                                                                                }
+                                                             },
+                                       "CloneStatusDto":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "repoId":  {
+                                                                                                "type":  "string",
+                                                                                                "format":  "uuid"
+                                                                                            },
+                                                                                 "jobId":  {
+                                                                                               "type":  "string",
+                                                                                               "format":  "uuid"
+                                                                                           },
+                                                                                 "status":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                                 "progressPercent":  {
+                                                                                                         "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                         "type":  [
+                                                                                                                      "null",
+                                                                                                                      "integer",
+                                                                                                                      "string"
+                                                                                                                  ],
+                                                                                                         "format":  "int32"
+                                                                                                     },
+                                                                                 "errorMessage":  {
+                                                                                                      "type":  [
+                                                                                                                   "null",
+                                                                                                                   "string"
+                                                                                                               ]
+                                                                                                  }
+                                                                             }
+                                                          },
+                                       "CommitActivityDto":  {
+                                                                 "type":  "object",
+                                                                 "properties":  {
+                                                                                    "weekStart":  {
+                                                                                                      "type":  "string",
+                                                                                                      "format":  "date-time"
+                                                                                                  },
+                                                                                    "commitCount":  {
+                                                                                                        "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                        "type":  [
+                                                                                                                     "integer",
+                                                                                                                     "string"
+                                                                                                                 ],
+                                                                                                        "format":  "int32"
+                                                                                                    }
+                                                                                }
+                                                             },
+                                       "ContributorDto":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "githubUsername":  {
+                                                                                                        "type":  "string"
+                                                                                                    },
+                                                                                 "avatarUrl":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                 "commitCount":  {
+                                                                                                     "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                     "type":  [
+                                                                                                                  "integer",
+                                                                                                                  "string"
+                                                                                                              ],
+                                                                                                     "format":  "int32"
+                                                                                                 }
+                                                                             }
+                                                          },
+                                       "CreateRepoRequestDto":  {
+                                                                    "type":  "object",
+                                                                    "properties":  {
+                                                                                       "repoUrl":  {
+                                                                                                       "type":  "string"
+                                                                                                   }
+                                                                                   }
+                                                                },
+                                       "DependencyGraphDto":  {
+                                                                  "type":  "object",
+                                                                  "properties":  {
+                                                                                     "repoId":  {
+                                                                                                    "type":  "string",
+                                                                                                    "format":  "uuid"
+                                                                                                },
+                                                                                     "nodes":  {
+                                                                                                   "type":  "array",
+                                                                                                   "items":  {
+                                                                                                                 "$ref":  "#/components/schemas/GraphNodeDto"
+                                                                                                             }
+                                                                                               },
+                                                                                     "edges":  {
+                                                                                                   "type":  "array",
+                                                                                                   "items":  {
+                                                                                                                 "$ref":  "#/components/schemas/GraphEdgeDto"
+                                                                                                             }
+                                                                                               }
+                                                                                 }
+                                                              },
+                                       "FileContentDto":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "path":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                                 "content":  {
+                                                                                                 "type":  "string"
+                                                                                             },
+                                                                                 "language":  {
+                                                                                                  "type":  [
+                                                                                                               "null",
+                                                                                                               "string"
+                                                                                                           ]
+                                                                                              }
+                                                                             }
+                                                          },
+                                       "FileTreeDto":  {
+                                                           "type":  "object",
+                                                           "properties":  {
+                                                                              "repoId":  {
+                                                                                             "type":  "string",
+                                                                                             "format":  "uuid"
+                                                                                         },
+                                                                              "nodes":  {
+                                                                                            "type":  "array",
+                                                                                            "items":  {
+                                                                                                          "$ref":  "#/components/schemas/FileTreeNodeDto"
+                                                                                                      }
+                                                                                        }
+                                                                          }
+                                                       },
+                                       "FileTreeNodeDto":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "path":  {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                                  "isDirectory":  {
+                                                                                                      "type":  "boolean"
+                                                                                                  }
+                                                                              }
+                                                           },
+                                       "GraphEdgeDto":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "sourceNodeId":  {
+                                                                                                    "type":  "string",
+                                                                                                    "format":  "uuid"
+                                                                                                },
+                                                                               "targetNodeId":  {
+                                                                                                    "type":  "string",
+                                                                                                    "format":  "uuid"
+                                                                                                },
+                                                                               "edgeType":  {
+                                                                                                "type":  "string"
+                                                                                            }
+                                                                           }
+                                                        },
+                                       "GraphNodeDto":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "id":  {
+                                                                                          "type":  "string",
+                                                                                          "format":  "uuid"
+                                                                                      },
+                                                                               "nodeType":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                               "pathOrName":  {
+                                                                                                  "type":  "string"
+                                                                                              }
+                                                                           }
+                                                        },
+                                       "HealthStatus":  {
+                                                            "type":  "integer"
+                                                        },
+                                       "HealthStatusDto":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "repoId":  {
+                                                                                                 "type":  "string",
+                                                                                                 "format":  "uuid"
+                                                                                             },
+                                                                                  "status":  {
+                                                                                                 "$ref":  "#/components/schemas/HealthStatus"
+                                                                                             },
+                                                                                  "responseTimeMs":  {
+                                                                                                         "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                         "type":  [
+                                                                                                                      "null",
+                                                                                                                      "integer",
+                                                                                                                      "string"
+                                                                                                                  ],
+                                                                                                         "format":  "int32"
+                                                                                                     },
+                                                                                  "checkedAt":  {
+                                                                                                    "type":  "string",
+                                                                                                    "format":  "date-time"
+                                                                                                }
+                                                                              }
+                                                           },
+                                       "LanguageStatDto":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "language":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                  "byteCount":  {
+                                                                                                    "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                    "type":  [
+                                                                                                                 "integer",
+                                                                                                                 "string"
+                                                                                                             ],
+                                                                                                    "format":  "int64"
+                                                                                                }
+                                                                              }
+                                                           },
+                                       "ProblemDetails":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "type":  {
+                                                                                              "type":  [
+                                                                                                           "null",
+                                                                                                           "string"
+                                                                                                       ]
+                                                                                          },
+                                                                                 "title":  {
+                                                                                               "type":  [
+                                                                                                            "null",
+                                                                                                            "string"
+                                                                                                        ]
+                                                                                           },
+                                                                                 "status":  {
+                                                                                                "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                                "type":  [
+                                                                                                             "null",
+                                                                                                             "integer",
+                                                                                                             "string"
+                                                                                                         ],
+                                                                                                "format":  "int32"
+                                                                                            },
+                                                                                 "detail":  {
+                                                                                                "type":  [
+                                                                                                             "null",
+                                                                                                             "string"
+                                                                                                         ]
+                                                                                            },
+                                                                                 "instance":  {
+                                                                                                  "type":  [
+                                                                                                               "null",
+                                                                                                               "string"
+                                                                                                           ]
+                                                                                              }
+                                                                             }
+                                                          },
+                                       "RepoCardDto":  {
+                                                           "type":  "object",
+                                                           "properties":  {
+                                                                              "id":  {
+                                                                                         "type":  "string",
+                                                                                         "format":  "uuid"
+                                                                                     },
+                                                                              "owner":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                              "name":  {
+                                                                                           "type":  "string"
+                                                                                       },
+                                                                              "description":  {
+                                                                                                  "type":  [
+                                                                                                               "null",
+                                                                                                               "string"
+                                                                                                           ]
+                                                                                              },
+                                                                              "topics":  {
+                                                                                             "type":  "array",
+                                                                                             "items":  {
+                                                                                                           "type":  "string"
+                                                                                                       }
+                                                                                         },
+                                                                              "primaryLanguage":  {
+                                                                                                      "type":  [
+                                                                                                                   "null",
+                                                                                                                   "string"
+                                                                                                               ]
+                                                                                                  },
+                                                                              "liveDemoUrl":  {
+                                                                                                  "type":  [
+                                                                                                               "null",
+                                                                                                               "string"
+                                                                                                           ]
+                                                                                              },
+                                                                              "healthStatus":  {
+                                                                                                   "$ref":  "#/components/schemas/HealthStatus"
+                                                                                               }
+                                                                          }
+                                                       },
+                                       "RepoDetailDto":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "id":  {
+                                                                                           "type":  "string",
+                                                                                           "format":  "uuid"
+                                                                                       },
+                                                                                "owner":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                                "name":  {
+                                                                                             "type":  "string"
+                                                                                         },
+                                                                                "description":  {
+                                                                                                    "type":  [
+                                                                                                                 "null",
+                                                                                                                 "string"
+                                                                                                             ]
+                                                                                                },
+                                                                                "topics":  {
+                                                                                               "type":  "array",
+                                                                                               "items":  {
+                                                                                                             "type":  "string"
+                                                                                                         }
+                                                                                           },
+                                                                                "readmeHtml":  {
+                                                                                                   "type":  [
+                                                                                                                "null",
+                                                                                                                "string"
+                                                                                                            ]
+                                                                                               },
+                                                                                "languages":  {
+                                                                                                  "type":  "array",
+                                                                                                  "items":  {
+                                                                                                                "$ref":  "#/components/schemas/LanguageStatDto"
+                                                                                                            }
+                                                                                              },
+                                                                                "contributors":  {
+                                                                                                     "type":  "array",
+                                                                                                     "items":  {
+                                                                                                                   "$ref":  "#/components/schemas/ContributorDto"
+                                                                                                               }
+                                                                                                 },
+                                                                                "commitActivity":  {
+                                                                                                       "type":  "array",
+                                                                                                       "items":  {
+                                                                                                                     "$ref":  "#/components/schemas/CommitActivityDto"
+                                                                                                                 }
+                                                                                                   },
+                                                                                "entryPointPath":  {
+                                                                                                       "type":  [
+                                                                                                                    "null",
+                                                                                                                    "string"
+                                                                                                                ]
+                                                                                                   },
+                                                                                "liveDemoUrl":  {
+                                                                                                    "type":  [
+                                                                                                                 "null",
+                                                                                                                 "string"
+                                                                                                             ]
+                                                                                                },
+                                                                                "healthStatus":  {
+                                                                                                     "$ref":  "#/components/schemas/HealthStatus"
+                                                                                                 },
+                                                                                "stars":  {
+                                                                                              "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                              "type":  [
+                                                                                                           "integer",
+                                                                                                           "string"
+                                                                                                       ],
+                                                                                              "format":  "int32"
+                                                                                          },
+                                                                                "forks":  {
+                                                                                              "pattern":  "^-?(?:0|[1-9]\\d*)$",
+                                                                                              "type":  [
+                                                                                                           "integer",
+                                                                                                           "string"
+                                                                                                       ],
+                                                                                              "format":  "int32"
+                                                                                          },
+                                                                                "analysisStatus":  {
+                                                                                                       "$ref":  "#/components/schemas/AnalysisStatus"
+                                                                                                   }
+                                                                            }
+                                                         }
+                                   }
+                   },
+    "tags":  [
+                 {
+                     "name":  "Analysis"
+                 },
+                 {
+                     "name":  "Clone"
+                 },
+                 {
+                     "name":  "Health"
+                 },
+                 {
+                     "name":  "Repos"
+                 }
+             ]
+}

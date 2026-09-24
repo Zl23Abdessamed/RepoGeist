@@ -1,0 +1,385 @@
+/* ~/styles/canvas.css */
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* faint dot-grid "terrain": graph-paper, structural — not a glowing orb */
+.canvas-ground {
+  background-image: radial-gradient(rgba(237, 231, 218, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===================================================================
+   Repogeist canvas home screen — component styles
+   (extracted from the inline <style> in src/routes/index.tsx)
+=================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.page {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* --- the canvas is the product ------------------------------------ */
+
+.stage {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ground);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  overflow: hidden;
+  transition: opacity 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.stage:active { cursor: grabbing; }
+/* panel open: the map is still there, slightly held back */
+.stage.dimmed { opacity: 0.45; transform: scale(0.985); }
+
+/* Before the first measured center lands: no grab cursor, no pan. There's
+   nothing to drag yet — the world is still finding its position and no
+   cards exist in the DOM (gated by <Show when={ready()}> in the
+   component) — so treat pointer input as a no-op until then rather than
+   letting an early drag fight the entrance animation. */
+.stage:not(.ready) { cursor: default; pointer-events: none; }
+
+/* Find the existing .world rule and update it to this: */
+.world { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  transform-origin: 0 0; 
+  will-change: transform; 
+}
+
+/* Add this new rule right below it */
+.world.smooth {
+  transition: transform 1000ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* 1px reference grid tied to pan/zoom so movement is perceptible.
+   Spatial reference, not decoration. Rendered as its own layer so it
+   can scale in from the stage's center on first load, independently
+   of the world transform (which is busy carrying the initial camera
+   jump-cut, not an animatable entrance). */
+.terrain-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(237, 231, 218, 0.05) 2px, transparent 1.5px);
+  /* background-size / background-position set inline, tied to pan & zoom */
+}
+
+/* --- top bar: thin, floats over the canvas ------------------------- */
+
+.topbar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  pointer-events: none;
+}
+.topbar > * { pointer-events: auto; }
+
+.wordmark {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 500; letter-spacing: 0.06em;
+}
+.wordmark .mark { color: var(--signal); font-size: 20px; line-height: 0; }
+
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
+
+/* --- buttons -------------------------------------------------------- */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.btn:hover { background: var(--surface-raised); }
+.btn.quiet { background: transparent; border-color: transparent; color: var(--ink-muted); }
+.btn.quiet:hover { color: var(--ink); background: rgba(237, 231, 218, 0.05); }
+/* the add-repo trigger, while its popover is open — same "this matters
+   right now" treatment the active repo-card border uses */
+.btn.active { border-color: var(--signal); color: var(--ink); }
+
+/* --- repo cards ------------------------------------------------------ */
+
+.repo-card {
+  position: absolute;
+  width: 292px;
+  padding: 16px 16px 13px;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: 10px;       /* distinct recipe per element class, per §5 self-check */
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+/* §3.4: hover is a small, quiet lift — nothing else. Kept separate from
+   the entrance transform (translateY/scale) that solid-motionone drives
+   inline, so the two never fight over the same `transform` shorthand. */
+.repo-card:hover { background: var(--surface-raised); }
+/* the accent transfers to whatever currently matters */
+.repo-card.active { border-color: var(--signal); }
+
+.card-head { display: flex; align-items: center; gap: 10px; }
+.card-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 500; letter-spacing: 0.02em;
+}
+.card-head .dot { margin-left: auto; }
+
+.card-desc {
+  margin: 8px 0 14px;
+  font-size: 13px; line-height: 1.55;
+  color: var(--ink-muted);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-foot { display: flex; align-items: center; font-size: 12px; color: var(--ink-muted); }
+.lang { display: inline-flex; align-items: center; gap: 7px; }
+.lang i { width: 9px; height: 9px; border-radius: 50%; }
+.card-links { margin-left: auto; display: inline-flex; gap: 12px; }
+.card-links a { color: var(--ink-muted); display: inline-flex; }
+.card-links a:hover { color: var(--ink); }
+
+/* semantic status dots — the only non-neutral color besides --signal */
+.dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.dot.up { background: var(--status-up); }
+.dot.down { background: var(--status-down); }
+.dot.unknown { background: var(--status-unknown); }
+
+/* --- the detail panel: the one orchestrated moment ------------------- */
+
+.scrim { position: absolute; inset: 0; z-index: 20; }
+
+.panel {
+  position: absolute; top: 0; right: 0; bottom: 0; z-index: 21;
+  width: min(42vw, 620px);   /* ~40% on desktop, per §3.3 */
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border-left: 1px solid var(--edge);
+  animation: panel-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.panel.closing { animation: panel-out 200ms ease forwards; }
+
+@keyframes panel-in { from { transform: translateX(36px); opacity: 0; } }
+@keyframes panel-out { to { transform: translateX(28px); opacity: 0; } }
+
+.panel-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--edge);
+}
+.panel-owner { margin: 0 0 2px; font-size: 12px; color: var(--ink-muted); }
+.panel-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 500; letter-spacing: 0.01em;
+}
+
+.tabs { display: flex; gap: 4px; padding: 0 16px; border-bottom: 1px solid var(--edge); }
+.tabs button {
+  appearance: none; background: none; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  color: var(--ink-muted);
+  padding: 11px 12px 9px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.tabs button:hover { color: var(--ink); }
+.tabs button.on { color: var(--ink); border-bottom-color: var(--ink); }
+
+.panel-body {
+  padding: 22px 24px 32px;
+  overflow-y: auto; flex: 1;
+  scrollbar-width: thin; scrollbar-color: var(--surface-raised) transparent;
+}
+
+.health { display: flex; align-items: center; gap: 9px; font-size: 13px; margin-bottom: 14px; }
+.panel-desc { margin: 0 0 22px; font-size: 14px; line-height: 1.6; max-width: 58ch; }
+
+.meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; margin: 0 0 24px; }
+.meta dt { font-size: 12px; color: var(--ink-muted); margin: 0 0 3px; }
+.meta dd { margin: 0; font-size: 13px; }
+dd.mono { font-family: var(--font-display); font-size: 12.5px; }
+
+.panel-body section { margin: 0 0 22px; }
+.panel-body h4 { margin: 0 0 10px; font-size: 12px; font-weight: 500; color: var(--ink-muted); }
+
+.lang-bar { display: flex; height: 8px; border-radius: 2px; overflow: hidden; background: var(--surface-raised); }
+.lang-bar i { display: block; height: 100%; }
+.lang-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 0; padding: 0; font-size: 12.5px; }
+.lang-legend li { display: inline-flex; align-items: center; gap: 7px; }
+.lang-legend i { width: 8px; height: 8px; border-radius: 50%; }
+
+.avatars { display: flex; }
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-raised);
+  border: 2px solid var(--surface);
+  font-size: 11px; color: var(--ink-muted);
+  margin-left: -8px;
+}
+.avatar:first-child { margin-left: 0; }
+
+.panel-actions { display: flex; gap: 10px; margin-top: 4px; }
+
+.empty { padding: 40px 0; }
+.empty p { margin: 0 0 6px; font-size: 14px; }
+.muted { color: var(--ink-muted); }
+
+@media (max-width: 768px) {
+  .panel { width: 100%; border-left: none; }
+}
+
+/* §3.4: reduced motion — panel still opens, via opacity only */
+@media (prefers-reduced-motion: reduce) {
+  .stage { transition: opacity 160ms ease; }
+  .stage.dimmed { transform: none; }
+  .panel { animation: fade-in 160ms ease; }
+  .panel.closing { animation: fade-out 140ms ease forwards; }
+}
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes fade-out { to { opacity: 0; } }
+
+
+/* ===================================================================
+   Add-repo popover — anchored under the trigger button instead of a
+   centered modal. Same surface language as everything else (--surface,
+   --edge), but shaped like a menu: narrow, short, top-right origin,
+   no full-screen veil holding it hostage in the middle of the screen.
+=================================================================== */
+
+.add-anchor {
+  position: relative; /* the popover positions off this, not the viewport */
+}
+
+.add-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  width: min(88vw, 320px);
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  padding: 14px 14px 13px;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5); /* the one place we lift off the canvas with shadow, since there's no veil to separate depth anymore */
+}
+
+.popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.popover-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+}
+
+.popover-row {
+  display: flex;
+  gap: 8px;
+}
+
+.url-input {
+  flex: 1;
+  min-width: 0; /* let it actually shrink in a flex row instead of overflowing */
+  font-family: var(--font-display); /* a URL is code-adjacent content — mono is truthful */
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--ground);        /* recessed one step below the popover surface */
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  padding: 8px 10px;
+  outline: none;
+}
+.url-input::placeholder { color: var(--ink-muted); opacity: 0.55; }
+.url-input:focus { border-color: var(--signal); }
+.url-input:disabled { opacity: 0.6; }
+.url-input.invalid,
+.url-input.invalid:focus { border-color: var(--status-down); }
+
+.field-help,
+.field-error {
+  margin: 8px 2px 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.field-help { color: var(--ink-muted); }
+.field-error { color: var(--status-down); } /* a validation failure is real signal, not decoration */
+
+/* The one place --signal becomes a filled surface: the primary action of
+   the popover. Everywhere else it stays a marker (focus ring, active
+   card border, wordmark dot). */
+.btn-primary {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--ground);
+  white-space: nowrap;
+}
+.btn-primary:hover { background: #d3af66; border-color: #d3af66; } /* one step brighter than --signal */
+
+.btn:disabled { opacity: 0.65; cursor: default; }
+
+@media (max-width: 480px) {
+  .add-popover { right: -8px; width: min(94vw, 300px); }
+}
+
+/* quiet fallbacks inside the detail panel for not-yet-synced repos */
+.panel-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
