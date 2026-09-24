@@ -582,7 +582,7 @@ const LandingPage: Component = () => {
             transition={{ duration: 0.5, delay: 0.25, easing: EASE }}
           >
             <FiGithub size={14} />
-            Source
+            Sources
           </Motion.a>
           <Motion.a
             class="btn primary"
